@@ -7,7 +7,8 @@ I run this project on a Raspberry Pi Zero that's connected to a 32 inch Samsung 
 ![alt text](https://github.com/Hilko113/jellyfin-movieposter/blob/main/example.jpg)
 
 
-I did not include fonts. You can download a font you like and edit the following lines in posterdownload.py
+I did not include fonts. You can download a font you like and edit the following lines in posterdownload.py:
+
             font_title = ImageFont.truetype("arial.ttf", size=30)
             font_tag = ImageFont.truetype("arial.ttf", size=70)
 
