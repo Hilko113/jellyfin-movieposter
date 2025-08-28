@@ -8,9 +8,9 @@ from PIL import Image, ImageDraw, ImageFont
 import qrcode
 
 # Replace these with your Jellyfin server details
-JELLYFIN_BASE_URL = "http://192.168.1.1:8096"
-API_KEY = "12345678909012345678901234567890"
-TARGET_USERNAME = "John"
+JELLYFIN_BASE_URL = "http://192.168.2.62:8096"
+API_KEY = "2e6e5ffe71904d3296efa9754570e268"
+TARGET_USERNAME = "Hilko"
 CACHE_FILE = "poster_cache.json"
 
 
@@ -106,8 +106,8 @@ def adjust_to_9_16(image_path, title, year, tagline=None, imdb_url=None, output_
         # Prepare drawing and fonts
         draw_pp = ImageDraw.Draw(passe_partout)
         try:
-            font_title = ImageFont.truetype("arial.ttf", size=30)
-            font_tag = ImageFont.truetype("arial.ttf", size=70)
+            font_title = ImageFont.truetype("nexa.ttf", size=30)
+            font_tag = ImageFont.truetype("melodrame.ttf", size=70)
         except IOError:
             font_title = ImageFont.load_default()
             font_tag = ImageFont.load_default()
@@ -173,7 +173,15 @@ def adjust_to_9_16(image_path, title, year, tagline=None, imdb_url=None, output_
 
         # Rotate to portrait
         final_img = final_img.rotate(90, expand=True)
-        final_img.save(output_path)
+
+        # Define the temporary file path
+        temp_output_path = "poster_temporary.jpg"
+        
+        # Save the final image to a temporary file first
+        final_img.save(temp_output_path)
+
+        os.replace(temp_output_path, output_path)
+        
         print(f"Poster processed and saved as {output_path}.")
 
 
